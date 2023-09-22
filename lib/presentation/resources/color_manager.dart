@@ -14,4 +14,6 @@ class AppColor {
   static const Color indigo = Colors.indigo;
   static const Color violet = Colors.purple;
 
+  static Color grey300 = Colors.grey.shade300;
+
 }
