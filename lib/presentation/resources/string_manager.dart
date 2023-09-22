@@ -8,6 +8,10 @@ class AppString {
   static const String lastColors = "Last 20 Colors";
   static const String clearCastColors = "Clear Last Colors";
 
+  static const String cancel = "Cancel";
+  static const String delete = "Delete";
+  static const String clearAlertContent = "The last 20 colors will be deleted. Are you sure?";
+
   static const String copiedToTheClipboard = "Copied to the clipboard.";
   static const String successfullyDeleted = "Successfully deleted.";
 
