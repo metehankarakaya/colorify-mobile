@@ -26,7 +26,7 @@ class _DrawerViewState extends State<DrawerView> {
               ),
             ),
             ListTile(
-              onTap: () => viewModel.clearPrefs(),
+              onTap: () => viewModel.showClearDialog(),
               trailing: const Icon(Icons.delete_outline),
               title: const Text(AppString.clearCastColors),
             ),
