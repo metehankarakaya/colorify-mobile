@@ -2,6 +2,8 @@ import 'dart:ui';
 
 import 'package:colorify/presentation/common/button/color_button_view.dart';
 import 'package:colorify/presentation/common/card/app_card.dart';
+import 'package:colorify/presentation/drawer/drawer_view.dart';
+import 'package:colorify/presentation/end_drawer/end_drawer_view.dart';
 import 'package:colorify/presentation/home/home_view_model.dart';
 import 'package:colorify/presentation/resources/asset_manager.dart';
 import 'package:colorify/presentation/resources/color_manager.dart';
@@ -25,9 +27,32 @@ class _HomeViewState extends State<HomeView> {
       viewModelBuilder: () => HomeViewModel(context),
       builder: (context, viewModel, child) => Scaffold(
         extendBodyBehindAppBar: true,
+        drawer: const DrawerView(),
+        endDrawer: const EndDrawerView(),
         appBar: AppBar(
           elevation: 0,
           backgroundColor: AppColor.transparent,
+          leading: Card(
+            color: AppColor.green700,
+            child: Builder(
+              builder: (context) => IconButton(
+                onPressed: () => Scaffold.of(context).openDrawer(),
+                tooltip: AppString.appName,
+                icon: const Icon(Icons.menu),
+              ),
+            ),
+          ),
+          actions: [
+            Card(
+              color: AppColor.green700,
+              child: Builder(
+                builder: (context) => IconButton(
+                  onPressed: () => Scaffold.of(context).openEndDrawer(),
+                  icon: const Icon(Icons.history),
+                ),
+              ),
+            )
+          ],
           title: const AppCard(),
         ),
         body: Column(
