@@ -29,8 +29,19 @@ class _HomeViewState extends State<HomeView> {
           children: [
             if (viewModel.randomColor != null) ... [
               Expanded(
-                child: Container(
-                  color: viewModel.randomColor,
+                child: Column(
+                  children: [
+                    Expanded(
+                      child: Container(
+                        color: viewModel.randomColor,
+                      ),
+                    ),
+                    ListTile(
+                      trailing: const Icon(Icons.copy),
+                      tileColor: AppColor.grey300,
+                      title: Text("Hex: #${viewModel.hexPart}"),
+                    )
+                  ],
                 ),
               )
             ]
@@ -41,6 +52,7 @@ class _HomeViewState extends State<HomeView> {
                 ),
               ),
             ],
+            const Divider(height: 0,),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
