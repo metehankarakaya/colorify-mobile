@@ -1,6 +1,9 @@
+import 'dart:ui';
+
 import 'package:colorify/presentation/common/button/color_button_view.dart';
 import 'package:colorify/presentation/common/card/app_card.dart';
 import 'package:colorify/presentation/home/home_view_model.dart';
+import 'package:colorify/presentation/resources/asset_manager.dart';
 import 'package:colorify/presentation/resources/color_manager.dart';
 import 'package:colorify/presentation/resources/string_manager.dart';
 import 'package:flutter/material.dart';
@@ -93,9 +96,12 @@ class _HomeViewState extends State<HomeView> {
             ]
             else ... [
               Expanded(
-                child: Container(
-                  color: AppColor.white,
-                ),
+                child: ClipRect(
+                  child: ImageFiltered(
+                    imageFilter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
+                    child: Image.asset(AppAsset.bgGif, fit: BoxFit.cover,),
+                  ),
+                )
               ),
             ],
             Row(
