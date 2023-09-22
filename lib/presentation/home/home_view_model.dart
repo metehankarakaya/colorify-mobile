@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:colorify/presentation/common/main_view_model.dart';
 import 'package:colorify/presentation/common/toast_message/toast_message_view.dart';
+import 'package:colorify/presentation/resources/string_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -27,19 +28,19 @@ class HomeViewModel extends MainViewModel {
   copyHexCode(String hexCode) async {
     await Clipboard.setData(ClipboardData(text: "#$hexCode"));
     Fluttertoast.cancel();
-    showToastMessage();
+    showToastMessage(AppString.copiedToTheClipboard);
   }
 
   copyRGB(String rgb) async {
     await Clipboard.setData(ClipboardData(text: "($rgb)"));
     Fluttertoast.cancel();
-    showToastMessage();
+    showToastMessage(AppString.copiedToTheClipboard);
   }
 
   copyCMYK(String cmyk) async {
     await Clipboard.setData(ClipboardData(text: "($cmyk)"));
     Fluttertoast.cancel();
-    showToastMessage();
+    showToastMessage(AppString.copiedToTheClipboard);
   }
 
   pickColor(String pickedColor) {
