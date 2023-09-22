@@ -32,6 +32,12 @@ class HomeViewModel extends MainViewModel {
     showToastMessage();
   }
 
+  copyCMYK(String cmyk) async {
+    await Clipboard.setData(ClipboardData(text: "($cmyk)"));
+    Fluttertoast.cancel();
+    showToastMessage();
+  }
+
   String hexPart = "";
   Color? randomColor;
   generateRandomShade(Color baseColor) {
@@ -47,6 +53,7 @@ class HomeViewModel extends MainViewModel {
     String colorCode = "0xFF$hexPart";
     randomColor = Color(int.parse(colorCode));
     hexToRGB(hexPart);
+    rgbToCMYK(R, G, B);
     notifyListeners();
   }
 
@@ -64,5 +71,22 @@ class HomeViewModel extends MainViewModel {
     RGB = "$R, $G, $B";
     notifyListeners();
   }
+
+  String CMYK = "";
+  rgbToCMYK(int R, int G, int B) {
+    double rDivided = R / 255.0;
+    double gDivided = G / 255.0;
+    double bDivided = B / 255.0;
+    double k = 1 - max(rDivided, max(gDivided, bDivided));
+    double c = (1 - rDivided - k) / (1 - k);
+    double m = (1 - gDivided - k) / (1 - k);
+    double y = (1 - bDivided - k) / (1 - k);
+    double C = c * 100;
+    double M = m * 100;
+    double Y = y * 100;
+    double K = k * 100;
+    CMYK = "${C.round()}%, ${M.round()}%, ${Y.round()}%, ${K.round()}%";
+  }
+
 
 }

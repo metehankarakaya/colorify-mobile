@@ -48,6 +48,12 @@ class _HomeViewState extends State<HomeView> {
                       title: Text("RGB (${viewModel.RGB})"),
                       onTap: () => viewModel.copyRGB(viewModel.RGB),
                     ),
+                    ListTile(
+                      trailing: const Icon(Icons.copy),
+                      tileColor: AppColor.grey300,
+                      title: Text("CMYK (${viewModel.CMYK})"),
+                      onTap: () => viewModel.copyCMYK(viewModel.CMYK),
+                    ),
                   ],
                 ),
               )
