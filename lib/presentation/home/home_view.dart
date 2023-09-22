@@ -40,6 +40,7 @@ class _HomeViewState extends State<HomeView> {
                       trailing: const Icon(Icons.copy),
                       tileColor: AppColor.grey300,
                       title: Text("Hex: #${viewModel.hexPart}"),
+                      onTap: () => viewModel.copyHexCode(viewModel.hexPart),
                     )
                   ],
                 ),

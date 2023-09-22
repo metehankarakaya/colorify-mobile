@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:colorify/presentation/common/main_view_model.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:logger/logger.dart';
 
 class HomeViewModel extends MainViewModel {
@@ -16,6 +16,10 @@ class HomeViewModel extends MainViewModel {
 
   listenToChanges() {
     notifyListeners();
+  }
+
+  copyHexCode(String hexCode) async {
+    await Clipboard.setData(ClipboardData(text: "#$hexCode"));
   }
 
   String hexPart = "";
