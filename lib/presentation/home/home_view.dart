@@ -54,6 +54,10 @@ class _HomeViewState extends State<HomeView> {
                         filled: true,
                         fillColor: AppColor.grey300,
                         labelText: "Hex Code",
+                        labelStyle: const TextStyle(
+                          fontStyle: FontStyle.italic,
+                          fontWeight: FontWeight.bold
+                        ),
                         suffixIcon: IconButton(
                           onPressed: viewModel.hexController.text.length == 6
                             ? () => viewModel.pickColor(viewModel.hexController.text)
