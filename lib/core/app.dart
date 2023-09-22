@@ -1,4 +1,5 @@
 import 'package:colorify/core/route_manager.dart';
+import 'package:colorify/presentation/resources/color_manager.dart';
 import 'package:flutter/material.dart';
 
 class MyApp extends StatefulWidget {
@@ -11,10 +12,13 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       onGenerateRoute: AppRouteGenerator.getRoute,
       initialRoute: AppRoute.homeRoute,
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSwatch().copyWith(primary: AppColor.green700)
+      ),
     );
   }
 }
