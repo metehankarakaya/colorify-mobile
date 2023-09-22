@@ -41,7 +41,13 @@ class _HomeViewState extends State<HomeView> {
                       tileColor: AppColor.grey300,
                       title: Text("Hex: #${viewModel.hexPart}"),
                       onTap: () => viewModel.copyHexCode(viewModel.hexPart),
-                    )
+                    ),
+                    ListTile(
+                      trailing: const Icon(Icons.copy),
+                      tileColor: AppColor.grey300,
+                      title: Text("RGB (${viewModel.RGB})"),
+                      onTap: () => viewModel.copyRGB(viewModel.RGB),
+                    ),
                   ],
                 ),
               )
