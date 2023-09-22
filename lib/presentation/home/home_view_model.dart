@@ -112,10 +112,7 @@ class HomeViewModel extends MainViewModel {
       lastHexCodes.removeAt(20);
     }
     prefs.setStringList("lastHexCodes", lastHexCodes);
-    logger.i(lastHexCodes);
-    logger.e(lastHexCodes.length);
     notifyListeners();
   }
-
 
 }

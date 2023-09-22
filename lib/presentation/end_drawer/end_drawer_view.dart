@@ -52,7 +52,7 @@ class _EndDrawerViewState extends State<EndDrawerView> {
                           onTap: () => viewModel.copyHexCode(viewModel.lastHexCodes[index]),
                           splashColor: AppColor.transparent,
                           trailing: SizedBox(
-                            width: size.width/2,
+                            width: size.width/2.5,
                             height: size.height/16,
                             child: Card(
                               color: viewModel.lastColors[index],

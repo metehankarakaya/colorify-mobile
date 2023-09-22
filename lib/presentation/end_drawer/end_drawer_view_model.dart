@@ -36,6 +36,4 @@ class EndDrawerViewModel extends MainViewModel {
     notifyListeners();
   }
 
-
-
 }
