@@ -1,7 +1,7 @@
 import 'package:colorify/presentation/resources/color_manager.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-void showToastMessage() => Fluttertoast.showToast(
-  msg: "Copied to the clipboard.",
+void showToastMessage(String msg) => Fluttertoast.showToast(
+  msg: msg,
   backgroundColor: AppColor.grey700
 );
