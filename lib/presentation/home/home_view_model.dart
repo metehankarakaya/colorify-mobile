@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:colorify/globalVariables.dart';
 import 'package:colorify/presentation/common/main_view_model.dart';
 import 'package:colorify/presentation/common/toast_message/toast_message_view.dart';
 import 'package:colorify/presentation/resources/string_manager.dart';
@@ -104,7 +105,6 @@ class HomeViewModel extends MainViewModel {
     CMYK = "${C.round()}%, ${M.round()}%, ${Y.round()}%, ${K.round()}%";
   }
 
-  List<String> lastHexCodes = [];
   saveHexCode(String hexCode) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     lastHexCodes.insert(0, hexCode.toUpperCase());

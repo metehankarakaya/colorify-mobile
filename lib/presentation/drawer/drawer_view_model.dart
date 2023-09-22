@@ -1,3 +1,4 @@
+import 'package:colorify/globalVariables.dart';
 import 'package:colorify/presentation/common/dialog/clear_dialog_view.dart';
 import 'package:colorify/presentation/common/main_view_model.dart';
 import 'package:colorify/presentation/common/toast_message/toast_message_view.dart';
@@ -32,6 +33,7 @@ class DrawerViewModel extends MainViewModel {
   clearPrefs() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.clear();
+    lastHexCodes.clear();
     Fluttertoast.cancel();
     Navigator.pop(context);
     showToastMessage(AppString.successfullyDeleted);
