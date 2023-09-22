@@ -27,28 +27,37 @@ class _HomeViewState extends State<HomeView> {
         ),
         body: Column(
           children: [
-            Expanded(
-              child: Container(
-                color: Colors.red.shade300,
+            if (viewModel.randomColor != null) ... [
+              Expanded(
+                child: Container(
+                  color: viewModel.randomColor,
+                ),
+              )
+            ]
+            else ... [
+              Expanded(
+                child: Container(
+                  color: AppColor.white,
+                ),
               ),
-            ),
+            ],
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 ColorButton(
                   buttonName: AppString.red,
                   buttonColor: AppColor.red,
-                  onPressed: () {},
+                  onPressed: () => viewModel.generateRandomShade(const Color(0XFFFF0000)),
                 ),
                 ColorButton(
                   buttonName: AppString.green,
                   buttonColor: AppColor.green,
-                  onPressed: () {},
+                  onPressed: () => viewModel.generateRandomShade(const Color(0XFF00FF00)),
                 ),
                 ColorButton(
                   buttonName: AppString.blue,
                   buttonColor: AppColor.blue,
-                  onPressed: () {},
+                  onPressed: () => viewModel.generateRandomShade(const Color(0XFF0000FF)),
                 ),
               ],
             ),
@@ -57,7 +66,7 @@ class _HomeViewState extends State<HomeView> {
               child: ColorButton(
                 buttonName: AppString.randomColor,
                 buttonColor: AppColor.black,
-                onPressed: () {},
+                onPressed: () => viewModel.generateRandomShade(const Color(0XFF000000)),
               ),
             )
           ],
