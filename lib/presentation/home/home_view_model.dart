@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:colorify/presentation/common/main_view_model.dart';
 import 'package:colorify/presentation/common/toast_message/toast_message_view.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:logger/logger.dart';
@@ -20,6 +21,8 @@ class HomeViewModel extends MainViewModel {
     notifyListeners();
   }
 
+  TextEditingController hexController = TextEditingController();
+
   copyHexCode(String hexCode) async {
     await Clipboard.setData(ClipboardData(text: "#$hexCode"));
     Fluttertoast.cancel();
@@ -36,6 +39,15 @@ class HomeViewModel extends MainViewModel {
     await Clipboard.setData(ClipboardData(text: "($cmyk)"));
     Fluttertoast.cancel();
     showToastMessage();
+  }
+
+  pickColor(String pickedColor) {
+    String colorCode = "0XFF$pickedColor";
+    randomColor = Color(int.parse(colorCode));
+    hexPart = pickedColor.toUpperCase();
+    hexToRGB(hexPart);
+    rgbToCMYK(R, G, B);
+    notifyListeners();
   }
 
   String hexPart = "";

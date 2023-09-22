@@ -4,6 +4,7 @@ import 'package:colorify/presentation/home/home_view_model.dart';
 import 'package:colorify/presentation/resources/color_manager.dart';
 import 'package:colorify/presentation/resources/string_manager.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:stacked/stacked.dart';
 
 class HomeView extends StatefulWidget {
@@ -37,6 +38,33 @@ class _HomeViewState extends State<HomeView> {
                         color: viewModel.randomColor,
                       ),
                     ),
+                    TextFormField(
+                      controller: viewModel.hexController,
+                      onChanged: (val) => viewModel.listenToChanges(),
+                      onFieldSubmitted: (val) {
+                        if (val.length == 6) {
+                          viewModel.pickColor(viewModel.hexController.text);
+                        }
+                      },
+                      inputFormatters: [
+                        FilteringTextInputFormatter.allow(RegExp(r'[\da-fA-F]')),
+                        LengthLimitingTextInputFormatter(6),
+                      ],
+                      decoration: InputDecoration(
+                        filled: true,
+                        fillColor: AppColor.grey300,
+                        labelText: "Hex Code",
+                        suffixIcon: IconButton(
+                          onPressed: viewModel.hexController.text.length == 6
+                            ? () => viewModel.pickColor(viewModel.hexController.text)
+                            : null,
+                          splashRadius: 20,
+                          icon: const Icon(Icons.send),
+                        ),
+                        prefixIcon: const Icon(Icons.color_lens_outlined),
+                        border: InputBorder.none,
+                      ),
+                    ),
                     ListTile(
                       trailing: const Icon(Icons.copy),
                       tileColor: AppColor.grey300,
@@ -66,7 +94,6 @@ class _HomeViewState extends State<HomeView> {
                 ),
               ),
             ],
-            const Divider(height: 0,),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
