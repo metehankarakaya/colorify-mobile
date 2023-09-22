@@ -1,4 +1,5 @@
 import 'package:colorify/presentation/common/button/color_button_view.dart';
+import 'package:colorify/presentation/common/card/app_card.dart';
 import 'package:colorify/presentation/home/home_view_model.dart';
 import 'package:colorify/presentation/resources/color_manager.dart';
 import 'package:colorify/presentation/resources/string_manager.dart';
@@ -23,7 +24,7 @@ class _HomeViewState extends State<HomeView> {
         appBar: AppBar(
           elevation: 0,
           backgroundColor: AppColor.transparent,
-          title: const Text(AppString.appName),
+          title: const AppCard(),
         ),
         body: Column(
           children: [
