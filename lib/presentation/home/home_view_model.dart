@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:logger/logger.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeViewModel extends MainViewModel {
   HomeViewModel(super.context);
@@ -47,6 +48,7 @@ class HomeViewModel extends MainViewModel {
     hexPart = pickedColor.toUpperCase();
     hexToRGB(hexPart);
     rgbToCMYK(R, G, B);
+    saveHexCode(hexPart);
     notifyListeners();
   }
 
@@ -66,6 +68,7 @@ class HomeViewModel extends MainViewModel {
     randomColor = Color(int.parse(colorCode));
     hexToRGB(hexPart);
     rgbToCMYK(R, G, B);
+    saveHexCode(hexPart);
     notifyListeners();
   }
 
@@ -98,6 +101,19 @@ class HomeViewModel extends MainViewModel {
     double Y = y * 100;
     double K = k * 100;
     CMYK = "${C.round()}%, ${M.round()}%, ${Y.round()}%, ${K.round()}%";
+  }
+
+  List<String> lastHexCodes = [];
+  saveHexCode(String hexCode) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    lastHexCodes.insert(0, hexCode.toUpperCase());
+    while (lastHexCodes.length > 20) {
+      lastHexCodes.removeAt(20);
+    }
+    prefs.setStringList("lastHexCodes", lastHexCodes);
+    logger.i(lastHexCodes);
+    logger.e(lastHexCodes.length);
+    notifyListeners();
   }
 
 
